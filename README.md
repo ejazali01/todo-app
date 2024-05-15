@@ -4,7 +4,7 @@
 ![checked task](https://github.com/ejazali01/todo-app/assets/116186076/2c5eaf3d-bdd6-495a-8f8e-eb1404b94e6e)
 
 
-TODO
+<h1>TODO</h1>
 
 A todo manager that you didn't ask for, but needed !
 to make sure that you complete your tasks on time ;)
