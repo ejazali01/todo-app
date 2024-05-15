@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AllTodos from "./tabs/AllTodos";
 import { useDispatch, useSelector } from "react-redux";
 import { setTabs } from "../redux/reducer/todoSlice";
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state?.todo?.filteredItems);
-  const currentTab = useSelector((state) => state?.todo?.tabs);
+  const { currentTab } = useSelector(
+    (state) => state?.todo
+  );
 
   useEffect(() => {
     dispatch(setTabs("alltodos"));
@@ -50,7 +51,7 @@ const TodoList = () => {
         </div>
       </div>
       <div className="flex gap-4">
-        <AllTodos todos={todos} />
+        <AllTodos />
       </div>
     </>
   );

@@ -6,6 +6,7 @@ const initialState = {
     items: loadTodos(),
     tabs: 'allTodos', // initial tab
     filteredItems: [], // to store filtered todos
+    editingTodos: null,
 }
 
 export const todoSlice = createSlice({
@@ -23,11 +24,19 @@ export const todoSlice = createSlice({
 
 
         removeTodo: (state, action) => {
-
+            state.items = state.items.filter((todo) => todo.id !== action.payload.id);
+            saveTodos(state.items); // Save updated todos to local storage
+            state.filteredItems = filterTodos(state.items, state.tabs);
         },
 
         updateTodo: (state, action) => {
-
+            const { id, title } = action.payload;
+            const todoToUpdate = state.items.find((todo) => todo.id === id);
+            if (todoToUpdate) {
+                todoToUpdate.title = title;
+                saveTodos(state.items); // Save updated todos to local storage
+                state.filteredItems = filterTodos(state.items, state.tabs);
+            }
         },
 
         setTabs: (state, action) => {
@@ -42,9 +51,13 @@ export const todoSlice = createSlice({
             }
             saveTodos(state.items) // save to local storage
             state.filteredItems = filterTodos(state.items, state.tabs);
+        },
+
+        setEditTodo: (state, action) => {
+            state.editingTodos = action.payload;
         }
     }
 })
 
-export const { addTodo, removeTodo, updateTodo, setTabs, isChecked } = todoSlice.actions;
+export const { addTodo, removeTodo, updateTodo, setTabs, isChecked, setEditTodo } = todoSlice.actions;
 export default todoSlice.reducer;
