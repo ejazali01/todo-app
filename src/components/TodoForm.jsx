@@ -45,7 +45,7 @@ const TodoForm = () => {
             <div className=" border-2 w-full flex rounded-md ">
               <input
                 name="title"
-                className="w-[220px] md:w-[310px] p-1 focus:outline-none focus:border-none focus:outline-gray-200 focus:rounded-md pl-4 text-sm text-gray-500"
+                className="w-[240px] md:w-[310px] p-1 focus:outline-none focus:border-none focus:outline-gray-200 focus:rounded-md pl-4 text-sm text-gray-500"
                 type="text"
                 value={editTask?.title || editingTodos?.title}
                 onChange={handleChange}
@@ -67,7 +67,7 @@ const TodoForm = () => {
             <div className=" border-2 w-full flex rounded-md ">
               <input
                 name="title"
-                className="w-[220px] md:w-[310px] p-1 focus:outline-none focus:border-none focus:outline-gray-200 focus:rounded-md pl-4 text-sm text-gray-500"
+                className="w-[240px] md:w-[310px] p-1 focus:outline-none focus:border-none focus:outline-gray-200 focus:rounded-md pl-4 text-sm text-gray-500"
                 type="text"
                 value={task.title}
                 onChange={handleChange}
