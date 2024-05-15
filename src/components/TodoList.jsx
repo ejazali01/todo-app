@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AllTodos from "./tabs/AllTodos";
 import { useDispatch, useSelector } from "react-redux";
 import { setTabs } from "../redux/reducer/todoSlice";
@@ -8,9 +8,14 @@ const TodoList = () => {
   const todos = useSelector((state) => state?.todo?.filteredItems);
   const currentTab = useSelector((state) => state?.todo?.tabs);
 
+  useEffect(() => {
+    dispatch(setTabs("alltodos"));
+  }, [dispatch]);
+
   const handleTabs = (tabs) => {
     dispatch(setTabs(tabs));
   };
+
   return (
     <>
       <div className=" ">

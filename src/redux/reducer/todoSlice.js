@@ -1,9 +1,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { filterTodos } from "../../utils/helper";
+import { filterTodos, loadTodos, saveTodos } from "../../utils/helper";
 
 
 const initialState = {
-    items: [],
+    items: loadTodos(),
     tabs: 'allTodos', // initial tab
     filteredItems: [], // to store filtered todos
 }
@@ -17,6 +17,7 @@ export const todoSlice = createSlice({
             const id = nanoid();
             const newTodo = { id, title: action.payload?.title, checked: false };
             state.items.push(newTodo);
+            saveTodos(state.items) // save to local storage
             state.filteredItems = filterTodos(state.items, state.tabs);
         },
 
@@ -39,6 +40,7 @@ export const todoSlice = createSlice({
             if (todo) {
                 todo.checked = !todo.checked;
             }
+            saveTodos(state.items) // save to local storage
             state.filteredItems = filterTodos(state.items, state.tabs);
         }
     }

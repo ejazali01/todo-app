@@ -4,22 +4,22 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/reducer/todoSlice";
 
 const initialState = {
-  title : ""
-}
+  title: "",
+};
 
 const TodoForm = () => {
   const dispatch = useDispatch();
   const [task, setTask] = useState(initialState);
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTask({ ...task, [name]: value });
   };
- 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addTodo(task));
-    setTask(initialState)
+    setTask(initialState);
     toast.success("todo added");
   };
 
