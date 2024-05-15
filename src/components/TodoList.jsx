@@ -5,7 +5,7 @@ import { setTabs } from "../redux/reducer/todoSlice";
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const { currentTab } = useSelector(
+  const { tabs : currentTab } = useSelector(
     (state) => state?.todo
   );
 

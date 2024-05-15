@@ -8,7 +8,7 @@ import { isChecked, removeTodo, setEditTodo } from "../../redux/reducer/todoSlic
 
 const AllTodos = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state?.todo?.filteredItems);
+  const {filteredItems: todos , editingTodos} = useSelector((state) => state?.todo);
 
   const handleChecked = (id) => {
     dispatch(isChecked(id));
@@ -64,7 +64,7 @@ const AllTodos = () => {
                       todo?.checked ? "text-gray-400" : ""
                     } text-xl hover:scale-105`}
                   >
-                    <CiEdit />
+                    <CiEdit className={`${editingTodos && todo.id  === editingTodos.id ? "text-indigo-400" : ""}`} />
                   </button>
                   <button onClick={() => dispatch(removeTodo(todo))} className="text-xl text-red-400 hover:text-md hover:scale-105 hover:text-red-500">
                     <MdDeleteOutline />

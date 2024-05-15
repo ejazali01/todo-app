@@ -53,7 +53,7 @@ const TodoForm = () => {
                 required
               />
               <button
-                className=" bg-red-300 rounded inline-flex p-1 px-4 border-l-4 focus:outline-gray-200 focus:rounded-md hover:bg-gray-200 border-gray-950 hover:text-md hover:font-medium"
+                className={`${editingTodos ? "focus:outline-indigo-500 focus:rounded-md" :  "focus:outline-gray-200 focus:rounded-md"} bg-gray-300 rounded inline-flex p-1 px-4 border-l-4  hover:bg-gray-200 border-gray-950 hover:text-md hover:font-medium`}
                 type="submit"
               >
                 Add Todo
